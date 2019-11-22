@@ -1,11 +1,16 @@
-const app = require('../app/app')
-const print = require('../app/source/print/print')
+const app   = require('../app/app') // application express server
+const print = require('../app/source/print/print') // print -> console.log
 
-const os = require('os')
-const http = require('http')
 
-let port = process.env.PORT || 3000
+const os    = require('os')
+const http  = require('http')
 
+
+// save var port on port 8080 or 3000
+let port    = process.env.PORT || 3000
+
+
+// view ip address or localhost
 function ipconfig(){
     let ip = os.networkInterfaces().en0
     if(ip){
@@ -13,5 +18,7 @@ function ipconfig(){
     }else{ return `https://localhost:${port}/` }
 }
 
+
+// connect on port to start server
 let server = http.createServer(app)
 server.listen(port, () => new print(`Connect on port ${port} :: ${ipconfig()}`).log())
