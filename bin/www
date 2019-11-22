@@ -7,8 +7,11 @@ const http = require('http')
 let port = process.env.PORT || 3000
 
 function ipconfig(){
-    let ip = os.networkInterfaces
+    let ip = os.networkInterfaces().en0
+    if(ip){
+        return `https://${ip[1].address}:${port}/`
+    }else{ return `https://localhost:${port}/` }
 }
 
 let server = http.createServer(app)
-server.listen(port, () => new print(`Connect on port ${port}`))
+server.listen(port, () => new print(`Connect on port ${port} :: ${ipconfig()}`).log())
