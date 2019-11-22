@@ -1,0 +1,28 @@
+{
+  "name": "securityauth",
+  "version": "1.0.0",
+  "description": "> v: 0.1 beta   > d: FukaChan[kun]",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FukaYouTube/Security-Authorization.git"
+  },
+  "author": "Fuka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FukaYouTube/Security-Authorization/issues"
+  },
+  "homepage": "https://github.com/FukaYouTube/Security-Authorization#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.7",
+    "bunyan": "^1.8.12",
+    "dotenv": "^8.2.0",
+    "ejs": "^2.7.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0"
+  }
+}
