@@ -1,0 +1,14 @@
+const app = require('../app/app')
+const print = require('../app/source/print/print')
+
+const os = require('os')
+const http = require('http')
+
+let port = process.env.PORT || 3000
+
+function ipconfig(){
+    let ip = os.networkInterfaces
+}
+
+let server = http.createServer(app)
+server.listen(port, () => new print(`Connect on port ${port}`))
