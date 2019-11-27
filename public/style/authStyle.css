@@ -1,0 +1,53 @@
+:root{
+    font-family: sans-serif, 'Gill Sans';
+}
+
+html, body{
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.auth__center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.auth__form__content{
+    width: 350px;
+    padding: 10px;
+    border-left: 2px solid #ff0040;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.20);
+}
+.auth__form__content h1{
+    margin: 0;
+    font-size: 26px;
+    font-weight: 400;
+}
+.auth__form__content input[type=text],
+input[type=password]{
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-bottom: 1px solid #c9c9c9;
+}
+.auth__form__content input[type=text]:focus,
+input[type=password]:focus{
+    border-bottom: 1px solid #ff0040;
+    transition: 0.5s;
+}
+.auth__form__content input[type=submit]{
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 16px;
+    background-color: #ff0040;
+}
