@@ -2,6 +2,13 @@
     font-family: sans-serif, 'Gill Sans';
 }
 
+a{
+    text-decoration: none;
+    color: #008fd1;
+    font-size: 16px;
+    border-bottom: 1px solid #008fd1;
+}
+
 html, body{
     margin: 0;
     background-color: #ffffff;
@@ -50,4 +57,12 @@ input[type=password]:focus{
     color: #ffffff;
     font-size: 16px;
     background-color: #ff0040;
+}
+.menu__vik ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.menu__vik ul li{
+    margin-top: 10px;
 }
