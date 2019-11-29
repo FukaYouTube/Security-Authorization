@@ -33,7 +33,7 @@ html, body{
     font-weight: 400;
 }
 .auth__form__content input[type=text],
-input[type=password]{
+input[type=password],input[type=email]{
     width: 100%;
     padding: 10px 0;
     margin-top: 10px;
@@ -43,7 +43,7 @@ input[type=password]{
     border-bottom: 1px solid #c9c9c9;
 }
 .auth__form__content input[type=text]:focus,
-input[type=password]:focus{
+input[type=password]:focus, input[type=email]:focus{
     border-bottom: 1px solid #ff0040;
     transition: 0.5s;
 }
