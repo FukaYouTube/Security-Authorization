@@ -1,11 +1,19 @@
-const app = require('../app')
+// use print.js
 const print = require('../source/print/print')
 
+// connect databases
+require('mongoose').connect(process.env.URL_MONGO, { useNewUrlParser: true, useUnifiedTopology: true }, () => print.log('Success connect to db'))
+
+// use application on app.js
+const app = require('../app')
+
+// import packages
 const fs    = require('fs')
 const os    = require('os')
 const https = require('https')
 
 
+// save port and ipconfig ip address
 let port = process.env.PORT || 3000
 function ipconfig(){
     let ip = os.networkInterfaces().en0
@@ -15,5 +23,6 @@ function ipconfig(){
 }
 
 
+// connect server on port
 let server = https.createServer({ key: fs.readFileSync('bin/server.key'), cert: fs.readFileSync('bin/server.cert') }, app)
-server.listen(port, () => new print(`Connect on port ${port} :: ${ipconfig()}`).log())
+server.listen(port, () => print.log(`Connect on port ${port} :: ${ipconfig()}`))
