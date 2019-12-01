@@ -1,0 +1,19 @@
+const app = require('../app')
+const print = require('../source/print/print')
+
+const fs    = require('fs')
+const os    = require('os')
+const https = require('https')
+
+
+let port = process.env.PORT || 3000
+function ipconfig(){
+    let ip = os.networkInterfaces().en0
+    if(ip){
+        return `https://${ip[1].address}:${port}/`
+    }else{ return `https://localhost:${port}/` }
+}
+
+
+let server = https.createServer({ key: fs.readFileSync('bin/server.key'), cert: fs.readFileSync('bin/server.cert') }, app)
+server.listen(port, () => new print(`Connect on port ${port} :: ${ipconfig()}`).log())
