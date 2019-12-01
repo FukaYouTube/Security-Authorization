@@ -1,28 +1,22 @@
 const { red, yellow, green, reset } = require('./colors')
 const logger = require('../logger/logger')
 
-class Print {
-    constructor(message){
-        this.message = message
-    }
-
-    log(){
-        let msg = `[denpo::log] ${this.message}`
-        console.log(green + msg + reset)
-        logger.info(msg)
-    }
-
-    warn(){
-        let msg = `[denpo::warn] ${this.message}`
-        console.log(yellow + msg + reset)
-        logger.info(msg)
-    }
-
-    error(){
-        let msg = `[denpo::error] ${this.message}`
-        console.log(red + msg + reset)
-        logger.info(msg)
-    }
+function log(message){
+    let msg = `[denpo::log] ${message}`
+    console.log(green + msg + reset)
+    logger.info(msg)
 }
 
-module.exports = Print
+function warn(message){
+    let msg = `[denpo::warn] ${message}`
+    console.log(yellow + msg + reset)
+    logger.info(msg)
+}
+
+function error(message){
+    let msg = `[denpo::error] ${message}`
+    console.log(red + msg + reset)
+    logger.info(msg)
+}
+
+module.exports = { log, warn, error }
