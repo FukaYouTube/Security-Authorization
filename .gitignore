@@ -4,7 +4,7 @@
 package-lock.json
 node_modules
 
- logger.json
+logger.json
 
 server.key
 server.cert
