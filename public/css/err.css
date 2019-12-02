@@ -1,0 +1,41 @@
+html, body{
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;;
+}
+
+.err-messages{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.err-messages h1{
+    margin: 0;
+    font-size: 50px;
+    color: #ffb65d;
+}
+.err-messages p{
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 200;
+    color: #ffffff;
+    background-color: #ffb65d;
+}
+.err-messages p span{
+    border-bottom: 1px solid #ffffff;
+}
+
+.bg-img__content{
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    z-index: -1;
+}
+.bg-img__content img{
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+}
