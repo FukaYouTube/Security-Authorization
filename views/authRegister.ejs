@@ -10,6 +10,39 @@
     <title>Denpo - Register</title>
 </head>
 <body>
+    <% if(log){ %>
+        <div class="content-message-log">
+            <% for(let i = 0; i < log.length; i++){ %>
+                <% if(log[i].type == 'error'){ %>
+                    <div class="message-log error">
+                        <p>
+                            <%= log[i].msg %>
+                            <span>(Нажмите чтобы убрать окно)</span>
+                        </p>
+                    </div>
+                <% } %>
+
+                <% if(log[i].type == 'warn'){ %>
+                    <div class="message-log warn">
+                        <p>
+                            <%= log[i].msg %>
+                            <span>(Нажмите чтобы убрать окно)</span>
+                        </p>
+                    </div>
+                <% } %>
+
+                <% if(log[i].type == 'info'){ %>
+                    <div class="message-log info">
+                        <p>
+                            <%= log[i].msg %>
+                            <span>(Нажмите чтобы убрать окно)</span>
+                        </p>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    <% } %>
+
     <div class="content__auth">
         <div class="auth_form">
             <form action="/register" method="post">
@@ -33,5 +66,7 @@
     <div class="bg-img__content">
         <img src="/public/img/xcxc.jpg" alt="chan - (=^･ω･^=)">
     </div>
+
+    <script src="/public/js/main.js"></script>
 </body>
 </html>
