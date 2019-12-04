@@ -65,6 +65,7 @@ input[type=email]:focus, input[type=password]:focus{
 }
 
 .bg-img__content{
+    z-index: -1;
     position: absolute;
     left: 20px;
     bottom: 20px;
