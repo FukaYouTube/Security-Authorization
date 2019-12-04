@@ -31,8 +31,8 @@ a{
     color: #ffffff;
 }
 .message-log span{
-    color: #ffb65d;
-    border-bottom: 1px solid #ffb65d;
+    color: #4625ff;
+    border-bottom: 1px solid #4625ff;
 }
 .message-log:hover{
     opacity: 1;
@@ -40,6 +40,12 @@ a{
 }
 .error{
     background-color: #fd4766;
+}
+.warn{
+    background-color: #ffb65d;
+}
+.info{
+    background-color: #81fd47;
 }
 
 .content__auth{
