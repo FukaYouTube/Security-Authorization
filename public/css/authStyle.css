@@ -11,6 +11,37 @@ a{
     text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.10);
 }
 
+.content-message-log{
+    z-index: 5;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.message-log{
+    width: 400px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+.message-log p{
+    color: #ffffff;
+}
+.message-log span{
+    color: #ffb65d;
+    border-bottom: 1px solid #ffb65d;
+}
+.message-log:hover{
+    opacity: 1;
+    transition: 0.5s;
+}
+.error{
+    background-color: #fd4766;
+}
+
 .content__auth{
     position: absolute;
     top: 50%;
