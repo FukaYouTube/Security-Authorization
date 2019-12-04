@@ -14,7 +14,7 @@
         <div class="content-message-log">
             <% for(let i = 0; i < log.length; i++){ %>
                 <% if(log[i].type == 'error'){ %>
-                    <div class="message-log error">
+                    <div class="message-log error" onclick="removeLog(this)">
                         <p>
                             <%= log[i].msg %>
                             <span>(Нажмите чтобы убрать окно)</span>
@@ -23,7 +23,7 @@
                 <% } %>
 
                 <% if(log[i].type == 'warn'){ %>
-                    <div class="message-log warn">
+                    <div class="message-log warn" onclick="removeLog(this)">
                         <p>
                             <%= log[i].msg %>
                             <span>(Нажмите чтобы убрать окно)</span>
@@ -32,7 +32,7 @@
                 <% } %>
 
                 <% if(log[i].type == 'info'){ %>
-                    <div class="message-log info">
+                    <div class="message-log info" onclick="removeLog(this)">
                         <p>
                             <%= log[i].msg %>
                             <span>(Нажмите чтобы убрать окно)</span>
