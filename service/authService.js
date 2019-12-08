@@ -7,13 +7,32 @@ const print = require('../source/print/print')
 
 const { User } = require('../models')
 
+let log = JSON.parse(fs.readFileSync('source/jsonlog.json', 'utf8'))
+
 exports.loginPost = async (req, res) => {
+    const { username, password } = req.body
+
+    let user = await User.findOne({ username })
+    let errors = []
+
+    // rules
+    if(!user){
+        errors.push({ type: 'error', msg: log['2user'] })
+    }else{
+        let comparePass = await bcrypt.compareSync(password, user.password)
+        if(!comparePass){ errors.push({ type: 'error', msg: log['2password'] }) }
+    }
+
+    if(errors.length > 0){
+        res.render('authLogin', { log: errors })
+    }else{
+        !user.code ? res.status(200).send('ok') : res.status(200).send('ok, not actived code!')
+    }
 }
 
 exports.registerPost = async (req, res) => {
     const { username, first_name, email, password } = req.body
 
-    let log = JSON.parse(fs.readFileSync('source/jsonlog.json', 'utf8'))
     let user = await User.findOne({ $or: [{ username }, { email }] })
     let errors = []
 
@@ -38,15 +57,29 @@ exports.registerPost = async (req, res) => {
         let hash = await bcrypt.hash(password[0] || password[1], 14)
 
         try{
-            mail.sendMail('active/send code to email', email)
+            let code = Math.floor(10000000000 + Math.random() * 90000000000) // 11
 
-            user = new User({ username, first_name, email, password: hash })
+            user = new User({ username, first_name, email, password: hash, code })
             user.save()
             
-            res.status(200).send('ok')
+            mail.sendMail('active/send code to email', email, user._id, code)
+
+            res.status(200).send('ok, not actived code!')
         }catch(e){
             print.error(e)
             res.status(500).send('Errors 500')
         }
+    }
+}
+
+exports.getApiRequestCode = async (req, res) => {
+    let user = await User.findById(req.params.userId)
+    if(user.code == req.params.code){
+        user.code = null
+        user.save()
+
+        res.redirect('/')
+    }else{
+        res.send('Error invalide code')
     }
 }
