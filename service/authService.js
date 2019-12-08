@@ -42,11 +42,11 @@ exports.registerPost = async (req, res) => {
 
             user = new User({ username, first_name, email, password: hash })
             user.save()
+            
+            res.status(200).send('ok')
         }catch(e){
             print.error(e)
-            return res.status(500).send('Errors 500')
+            res.status(500).send('Errors 500')
         }
-
-        return res.status(200).send('ok')
     }
 }
