@@ -14,7 +14,7 @@ let mailer = nodemailer.createTransport({
 let msgJSON = JSON.parse(fs.readFileSync('source/messages.json', 'utf8'))
 
 exports.sendMailToCode = (email, user_id, code) => {
-        let urlCode = `https://localhost:8080/code_actived/api/${user_id}&${code}`
+        let urlCode = `https://localhost:4349/code_actived/api/${user_id}&${code}`
 
         mailer.sendMail({
             from: process.env.E_LOGIN,
