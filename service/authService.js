@@ -1,5 +1,6 @@
 const fs = require('fs')
 const bcrypt = require('bcrypt')
+const useragent = require('useragent')
 
 const rx = require('./regexService')
 const mail = require('./mailService')
@@ -26,6 +27,9 @@ exports.loginPost = async (req, res) => {
     if(errors.length > 0){
         res.render('authLogin', { log: errors })
     }else{
+        let agent = useragent.parse(req.headers['user-agent'])
+        
+        mail.sendMailToUnInput(user.email, agent)
         !user.code ? res.status(200).send('ok') : res.status(200).send('ok, not actived code!')
     }
 }
@@ -62,7 +66,7 @@ exports.registerPost = async (req, res) => {
             user = new User({ username, first_name, email, password: hash, code })
             user.save()
             
-            mail.sendMail('active/send code to email', email, user._id, code)
+            mail.sendMailToCode(email, user._id, code)
 
             res.status(200).send('ok, not actived code!')
         }catch(e){
