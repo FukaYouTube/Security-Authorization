@@ -1,9 +1,9 @@
-const fs = require('fs')
-const bcrypt = require('bcrypt')
+const fs        = require('fs')
+const bcrypt    = require('bcrypt')
 const useragent = require('useragent')
 
-const rx = require('./regexService')
-const mail = require('./mailService')
+const rx    = require('./regexService')
+const mail  = require('./mailService')
 const print = require('../source/print/print')
 
 const { User } = require('../models')
@@ -27,6 +27,7 @@ exports.loginPost = async (req, res) => {
     if(errors.length > 0){
         res.render('authLogin', { log: errors })
     }else{
+        // user agent
         let agent = useragent.parse(req.headers['user-agent'])
         
         mail.sendMailToUnInput(user.email, agent)
